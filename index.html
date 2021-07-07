@@ -1,159 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LandingPage</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Text</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <h1>YONG YIBING</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script>
+      var scene = new THREE.Scene();
 
-<body>
-    <p>IffahMTU</p>
-    <script src="./build/three.min.js"></script>
-    <script src="./build/OrbitControls.js"></script>
+      var camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.z = 5;
 
-    <!-- <script type="module">
+      var renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setClearColor("#e5e5e5");
+      renderer.setSize(window.innerWidth, window.innerHeight);
 
-        // Scene
-const scene = new THREE.Scene()
+      document.body.appendChild(renderer.domElement);
 
-/**
- * Textures
- */
-const textureLoader = new THREE.TextureLoader()
+      window.addEventListener("resize", () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
 
-const matcapTexture = textureLoader.load('./textures/matcaps/8.png')
+        camera.updateProjectionMatrix();
+      });
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 1)
-scene.add(ambientLight)
+      var raycaster = new THREE.Raycaster();
+      var mouse = new THREE.Vector2();
 
-const pointLight = new THREE.PointLight(0xffffff,0.7)
-pointLight.position.y = 150
-pointLight.position.x = 50
-pointLight.position.z = 150
-scene.add(pointLight)
+      var geometry = new THREE.BoxGeometry(1, 1, 1);
+      var material = new THREE.MeshLambertMaterial({ color: 0xf7f7f7 });
+      //var mesh = new THREE.Mesh(geometry, material);
 
-//fonts
-const fontLoader = new THREE.FontLoader()
-fontLoader.load('./fonts/helvetiker_regular.typeface.json',
-(font) => {
-    const textGeometry = new THREE.TextGeometry('IffahMTU', 
-    {
-        font:font,
-        size: 0.5,
-        height: 0.2,
-        curveSegments: 12,
-        bevelEnabled: true,
-        bevelThickness: 0.03,
-        bevelSize: 0.02,
-        bevelOffset: 0,
-        bevelSegments: 5
+      //scene.add(mesh);
 
-    })
-    textGeometry.center()
-    // textGeometry.computeBoundingBox()
-    // textGeometry.translate(
-    //     -textGeometry.boundingBox.max.x * 0.5,
-    //     -textGeometry.boundingBox.max.y * 0.5,
-    //     -textGeometry.boundingBox.max.z * 0.5,
-    // )
-    const textmaterial = new THREE.MeshMatcapMaterial(
-        {
-            matcap: matcapTexture,
-        })
-    const text = new THREE.Mesh(textGeometry, textmaterial)
-    scene.add(text)
+      meshX = -10;
+      for (var i = 0; i < 15; i++) {
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.x = (Math.random() - 0.5) * 10;
+        mesh.position.y = (Math.random() - 0.5) * 10;
+        mesh.position.z = (Math.random() - 0.5) * 10;
+        scene.add(mesh);
+        meshX += 1;
+      }
 
-    const donutGeometry = new THREE.TorusGeometry(0.3,0.2,32,64)
-    for(let i = 0; i < 100; i++)
-    {
-        const donut = new THREE.Mesh(donutGeometry, textmaterial)
-        donut.position.x = (Math.random() - 0.5) * 12
-        donut.position.y = (Math.random() - 0.5) * 12
-        donut.position.z = (Math.random() - 0.5) * 12
-        donut.rotation.x = Math.random() * Math.PI
-        donut.rotation.y = Math.random() * Math.PI
-        donut.rotation.z = Math.random() * Math.PI
+      var light = new THREE.PointLight(0xffffff, 1, 1000);
+      light.position.set(0, 0, 0);
+      scene.add(light);
 
-        const scale = Math.random()
-        donut.scale.set(scale,scale,scale)
+      var light = new THREE.PointLight(0xffffff, 2, 1000);
+      light.position.set(0, 0, 25);
+      scene.add(light);
 
-        scene.add(donut)
-    }
-})
+      var render = function () {
+        requestAnimationFrame(render);
 
-/**
- * Sizes
- */
-const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
+        renderer.render(scene, camera);
+      };
 
-window.addEventListener('resize', () =>
-{
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+      function onMouseMove(event) {
+        event.preventDefault();
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
+        raycaster.setFromCamera(mouse, camera);
 
-/**
- * Camera
- */
-// Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 1
-camera.position.y = 1
-camera.position.z = 2
-camera.lookAt(scene.position)
-scene.add(camera)
+        var intersects = raycaster.intersectObjects(scene.children, true);
+        for (var i = 0; i < intersects.length; i++) {
+          this.tl = new TimelineMax();
+          this.tl.to(intersects[i].object.scale, 1, {
+            x: 2,
+            ease: Expo.easeOut,
+          });
+          this.tl.to(intersects[i].object.scale, 0.5, {
+            x: 0.5,
+            ease: Expo.easeOut,
+          });
+          this.tl.to(intersects[i].object.position, 0.5, {
+            x: 2,
+            ease: Expo.easeOut,
+          });
+          this.tl.to(
+            intersects[i].object.rotation,
+            0.5,
+            { y: Math.PI * 0.5, ease: Expo.easeOut },
+            "=-1.5"
+          );
+        }
+      }
 
-// Controls
-const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
-
-/**
- * Renderer
- */
-const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
-})
-renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-
-/**
- * Animate
- */
-const clock = new THREE.Clock()
-
-const tick = () =>
-{
-    const elapsedTime = clock.getElapsedTime()
-
-    camera.position.x = (0.01 * elapsedTime) * Math.PI
-    camera.position.y = (0.01 * elapsedTime) * Math.PI
-
-    // Update controls
-    controls.update()
-
-    // Render
-    renderer.render(scene, camera)
-
-    // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
-}
-
-tick()
-    </script> -->
-</body>
-
+      window.addEventListener("mousemove", onMouseMove);
+      render();
+    </script>
+  </body>
 </html>
