@@ -1,21 +1,47 @@
 body { 
-    margin: 0; 
-    height: 100vh;
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
   
 canvas { 
     display: block;
 }
 
-h1 {
+.main{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.holder{
+    position: relative;
+    width: 28%;
+    height: 100%;
+    top: 17vw;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+canvas{
     position: absolute;
-    top: 3em;
-    left: 5.5em;
+    top: 0;
+}
+
+.holder h1 {
+    position: relative;
     font-family: 'Montserrat';
-    font-size: 7em;
+    font-size: 5em;
     text-transform: uppercase;
-    width: auto;
+    width: 100%;
     line-height: .8em;
     border: 5px solid black;
     padding: .2em;
+    color: red;
+    z-index: 2;
   }
+
