@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Access Required</title>
+
+    <script src="js/auth.js"></script>
+
+    <style>
+        :root {
+            --bg: #101010;
+            --text: #f3f3f0;
+            --muted: #858585;
+            --line: rgba(255, 255, 255, 0.14);
+            --accent: #b7ff4a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-header {
+            width: 100%;
+            padding: 28px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .header-label {
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .login-main {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 760px;
+        }
+
+        .login-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .login-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .login-title {
+            margin: 0;
+            font-size: clamp(54px, 9vw, 120px);
+            line-height: 0.86;
+            letter-spacing: -0.065em;
+            font-weight: 500;
+        }
+
+        .login-title span {
+            color: var(--muted);
+        }
+
+        .login-description {
+            max-width: 440px;
+            margin: 40px 0 50px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .login-form {
+            width: 100%;
+            border-top: 1px solid var(--line);
+            padding-top: 24px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .input-row {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid var(--text);
+        }
+
+        .password-input {
+            flex: 1;
+            min-width: 0;
+            border: 0;
+            outline: 0;
+            padding: 16px 0;
+            background: transparent;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 20px;
+        }
+
+        .password-input::placeholder {
+            color: #555;
+        }
+
+        .submit-button {
+            border: 0;
+            background: transparent;
+            color: var(--text);
+            padding: 16px 0 16px 30px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.25s ease;
+        }
+
+        .submit-button:hover {
+            color: var(--accent);
+        }
+
+        .submit-button::after {
+            content: " ↗";
+        }
+
+        .error {
+            margin-top: 18px;
+            color: #ff6b6b;
+            font-size: 12px;
+        }
+
+        .login-footer {
+            width: 100%;
+            padding: 22px 40px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .access-duration {
+            color: var(--text);
+        }
+
+        @media (max-width: 700px) {
+            .login-header {
+                padding: 22px 20px;
+            }
+
+            .header-label {
+                font-size: 9px;
+            }
+
+            .login-main {
+                padding: 60px 20px;
+            }
+
+            .login-meta {
+                margin-bottom: 22px;
+                font-size: 9px;
+            }
+
+            .login-title {
+                font-size: clamp(54px, 18vw, 90px);
+            }
+
+            .login-description {
+                margin: 30px 0 40px;
+                font-size: 14px;
+            }
+
+            .password-input {
+                font-size: 18px;
+                padding: 14px 0;
+            }
+
+            .submit-button {
+                padding: 14px 0 14px 20px;
+            }
+
+            .login-footer {
+                padding: 18px 20px;
+                font-size: 8px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header-label {
+                display: none;
+            }
+
+            .login-main {
+                padding: 50px 20px;
+            }
+
+            .login-title {
+                font-size: 58px;
+            }
+
+            .login-description {
+                margin: 25px 0 35px;
+            }
+
+            .input-row {
+                display: block;
+            }
+
+            .password-input {
+                width: 100%;
+            }
+
+            .submit-button {
+                width: 100%;
+                padding: 14px 0;
+                text-align: left;
+            }
+
+            .login-footer {
+                gap: 10px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="login-header">
+        <div class="header-label">
+            Portfolio / Private Access
+        </div>
+    </header>
+
+    <main class="login-main">
+
+        <div class="login-wrapper">
+
+            <div class="login-meta">
+                <span class="login-dot"></span>
+                <span>Restricted Access</span>
+            </div>
+
+            <h1 class="login-title">
+                Enter<br>
+                <span>Password.</span>
+            </h1>
+
+            <p class="login-description">
+                This portfolio is currently private.
+                Enter the access password to continue.
+            </p>
+
+            <form class="login-form" id="loginForm">
+
+                <label class="input-label" for="password">
+                    Access Password
+                </label>
+
+                <div class="input-row">
+
+                    <input
+                        class="password-input"
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                        autofocus
+                    >
+
+                    <button
+                        class="submit-button"
+                        type="submit"
+                    >
+                        Enter
+                    </button>
+
+                </div>
+
+                <div class="error" id="error" hidden>
+                    Incorrect password.
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <footer class="login-footer">
+
+        <span>
+            Creative Technologist
+        </span>
+
+        <span class="access-duration">
+            Access valid for 01 hour
+        </span>
+
+    </footer>
+
+    <script>
+        if (hasValidAccess()) {
+            window.location.replace("index.html");
+        }
+
+        const form = document.getElementById("loginForm");
+        const passwordInput = document.getElementById("password");
+        const error = document.getElementById("error");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            error.hidden = true;
+
+            const password = passwordInput.value;
+
+            if (await checkPassword(password)) {
+
+                grantAccess();
+
+                window.location.replace("index.html");
+
+            } else {
+
+                error.hidden = false;
+                passwordInput.value = "";
+                passwordInput.focus();
+
+            }
+        });
+
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get("expired") === "1") {
+            alert("Your access has expired. Please enter the password again.");
+        }
+    </script>
+
+</body>
+
+</html>

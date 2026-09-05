@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        const accessTime = Number(sessionStorage.getItem("portfolio_access_time"));
+        const accessDuration = 60 * 60 * 1000;
+
+        if (
+            !accessTime ||
+            Date.now() - accessTime >= accessDuration
+        ) {
+            sessionStorage.removeItem("portfolio_access_time");
+            window.location.replace("login.html");
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>IFFAHMTU | Creative Technologist / Interactive Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="loader">
+        <div class="loader-text">IFFAHMTU.</div>
+    </div>
+
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <div class="noise"></div>
+    <div class="spotlight"></div>
+
+    <nav>
+        <div class="logo">IFFAHMTU.</div>
+        <ul>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Work</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#archive" class="nav-link">Archive</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">Creative Technologist / Interactive Developer</p>
+            <h1 class="title">Turning<br>Ideas Into<br>Experiences.</h1>
+            <p class="subtitle">Web • AR • Interactive • Immersive</p>
+            <a href="#projects" class="button magnetic">View Selected Work</a>
+        </div>
+        <div id="three-container"></div>
+        <div class="scroll-indicator"><span></span></div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-title">
+            <p>About Me</p>
+            <h2>Interactive<br>Developer.</h2>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm an Interactive Web Developer and Creative Technologist focused on building digital experiences
+                    that combine technology, design and interaction.</p>
+                <p>My work spans websites, campaign microsites, WebAR experiences, interactive product showcases, Veeva
+                    CLMs, virtual tours and immersive digital experiences.</p>
+                <p>I work across frontend development, interactive media and creative technology, turning ideas and
+                    designs into functional experiences.</p>
+            </div>
+
+            <div class="stats">
+                <div>
+                    <h3><span class="stat-number">30</span><span class="stat-plus">+</span></h3>
+                    <p>Digital Projects</p>
+                </div>
+                <div>
+                    <h3><span class="stat-number">8</span><span class="stat-plus">+</span></h3>
+                    <p>Experience Formats</p>
+                </div>
+                <div>
+                    <h3><span class="stat-number">15</span><span class="stat-plus">+</span></h3>
+                    <p>Brands & Organisations</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills-wrapper">
+            <div class="skills">
+
+                <div class="skill-card">
+                    <div class="skill-icon">01</div>
+                    <h3>Web</h3>
+                    <div class="skill-list">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>jQuery</span>
+                        <span>Three.js</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">02</div>
+                    <h3>Development</h3>
+                    <div class="skill-list">
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                        <span>WordPress</span>
+                        <span>Elementor</span>
+                        <span>API</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">03</div>
+                    <h3>Immersive</h3>
+                    <div class="skill-list">
+                        <span>Unity</span>
+                        <span>AR</span>
+                        <span>WebAR</span>
+                        <span>Zappar</span>
+                        <span>360°</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">04</div>
+                    <h3>Creative</h3>
+                    <div class="skill-list">
+                        <span>Photoshop</span>
+                        <span>Illustrator</span>
+                        <span>After Effects</span>
+                        <span>Premiere Pro</span>
+                        <span>InDesign</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-title">
+            <p>Selected Work</p>
+            <h2>Built Across<br>Digital & Immersive.</h2>
+        </div>
+
+        <div class="project-list">
+
+            <div class="project-card">
+                <div class="project-image"><img src="assets/img/heritraces.webp"
+                        alt="Heritrace interactive heritage experience"></div>
+                <div class="project-info">
+                    <p class="project-type">Web • AR • Gamification</p>
+                    <h3>Heritrace</h3>
+                    <p>Interactive heritage platform combining custom web development, gamification, AR and backend
+                        functionality.</p>
+                    <div class="tags">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>AR</span>
+                    </div>
+                    <a href="#" class="case-study-btn" data-case="heritrace">View Case Study →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><img src="assets/img/pohkong.webp" alt="Poh Kong AR experience"></div>
+                <div class="project-info">
+                    <p class="project-type">AR • Unity • WebGL</p>
+                    <h3>Poh Kong AR</h3>
+                    <p>Interactive AR product experience combining Unity, WebGL, camera interaction and photo and video
+                        capture.</p>
+                    <div class="tags">
+                        <span>Unity</span><span>WebGL</span><span>AR</span><span>Camera</span><span>Video</span>
+                    </div>
+                    <a href="#" class="case-study-btn" data-case="pohkong">View Case Study →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="assets/img/interactive_360_mobile.webp">
+                        <img src="assets/img/interactive_360.webp" alt="Interactive 360">
+                    </picture>
+                </div>
+                <div class="project-info">
+                    <p class="project-type">Immersive • 360°</p>
+                    <h3>Immersive 360° Experiences</h3>
+                    <p>A collection of interactive virtual environments created for automotive, healthcare and
+                        experiential campaigns.</p>
+                    <div class="tags"><span>3DVista</span><span>360°</span><span>Virtual
+                            Tour</span><span>Interactive</span></div>
+                    <a href="#" class="case-study-btn" data-case="interactive360">View Case Study →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="assets/img/healthcare_digital_mobile.webp">
+                        <img src="assets/img/healthcare_digital.webp" alt="Healthcare digital experiences">
+                    </picture>
+                </div>
+                <div class="project-info">
+                    <p class="project-type">Healthcare • Veeva • Interactive</p>
+                    <h3>Healthcare Digital Experiences</h3>
+                    <p>Interactive CLMs, VAEs, quizzes and calculators developed for healthcare and pharmaceutical
+                        communication.</p>
+                    <div class="tags"><span>Veeva</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                    <a href="#" class="case-study-btn" data-case="healthcare">View Case Study →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="assets/img/interactive_leaflet_mobile.webp">
+                        <img src="assets/img/interactive_leaflet.webp" alt="Automotive interactive experiences">
+                    </picture>
+                </div>
+                <div class="project-info">
+                    <p class="project-type">Interactive • Automotive</p>
+                    <h3>Automotive Digital Experiences</h3>
+                    <p>Interactive digital leaflets and product experiences created across multiple automotive campaigns
+                        and vehicle models.</p>
+                    <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Interactive</span>
+                    </div>
+                    <a href="#" class="case-study-btn" data-case="automotive">View Case Study →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><img src="assets/img/webar.webp" alt="WebAR campaign experiences"></div>
+                <div class="project-info">
+                    <p class="project-type">WebAR • Campaigns</p>
+                    <h3>WebAR Campaign Experiences</h3>
+                    <p>Browser-based AR experiences developed for campaigns, events and physical environments using
+                        image tracking and interactive content.</p>
+                    <div class="tags"><span>Zappar</span><span>WebAR</span><span>AR</span><span>JavaScript</span></div>
+                    <a href="#" class="case-study-btn" data-case="webar">View Case Study →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><img src="assets/img/arcamera.webp" alt="AR camera experiences"></div>
+                <div class="project-info">
+                    <p class="project-type">AR • Social • Camera</p>
+                    <h3>AR & Interactive Camera</h3>
+                    <p>Camera-based AR experiences created for events, social platforms and campaigns, including photo,
+                        video and interactive effects.</p>
+                    <div class="tags"><span>Unity</span><span>AR</span><span>Camera</span><span>Video</span><span>Face
+                            Tracking</span></div>
+                    <a href="#" class="case-study-btn" data-case="arcamera">View Case Study →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><img src="assets/img/website.webp" alt="Websites and digital platforms">
+                </div>
+                <div class="project-info">
+                    <p class="project-type">Web Development</p>
+                    <h3>Websites & Digital Platforms</h3>
+                    <p>Custom websites and digital platforms developed across responsive frontend, PHP and
+                        WordPress-based solutions.</p>
+                    <div class="tags">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>WordPress</span>
+                    </div>
+                    <a href="#" class="case-study-btn" data-case="website">View Case Study →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="section-title">
+            <p>Experience</p>
+            <h2>Where I've<br>Been Building.</h2>
+        </div>
+
+        <div class="experience-list">
+
+            <div class="experience-item">
+                <div class="experience-number">01</div>
+                <div class="experience-main">
+                    <div class="experience-heading">
+                        <div>
+                            <p class="experience-role">Creative Technologist</p>
+                            <h3>Current Company</h3>
+                        </div>
+                        <span class="experience-date">2021 — Present</span>
+                    </div>
+                    <p>Develop interactive digital experiences across websites, campaign microsites, Veeva CLMs and
+                        VAEs, WebAR, AR, 360° experiences and other digital media. Work across frontend development,
+                        animation, interaction and technical implementation, translating creative concepts into
+                        functional experiences for real-world campaigns.</p>
+                    <div class="experience-tags">
+                        <span>Frontend</span>
+                        <span>JavaScript</span>
+                        <span>PHP</span>
+                        <span>Veeva</span>
+                        <span>AR</span>
+                        <span>WebAR</span>
+                        <span>Unity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-number">02</div>
+                <div class="experience-main">
+                    <div class="experience-heading">
+                        <div>
+                            <p class="experience-role">Freelance Interactive Developer</p>
+                            <h3>Independent / Current Company</h3>
+                        </div>
+                        <span class="experience-date">2019 — 2020</span>
+                    </div>
+                    <p>Worked on interactive digital projects including websites, microsites and creative digital
+                        experiences, developing frontend implementations and interactive content.</p>
+                    <div class="experience-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Interactive</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-number">03</div>
+                <div class="experience-main">
+                    <div class="experience-heading">
+                        <div>
+                            <p class="experience-role">Interactive Designer Intern</p>
+                            <h3>Internship</h3>
+                        </div>
+                        <span class="experience-date">2019</span>
+                    </div>
+                    <p>Worked on interactive prototypes for project proposals, exploring Unity and Unreal Engine to
+                        develop concepts and demonstrate potential digital experiences.</p>
+                    <div class="experience-tags">
+                        <span>Unity</span>
+                        <span>Unreal Engine</span>
+                        <span>Prototyping</span>
+                        <span>Interactive</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="archive" id="archive">
+        <div class="section-title">
+            <p>More Work</p>
+            <h2>Project<br>Archive.</h2>
+        </div>
+
+        <div class="archive-list">
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>01</span>
+                    <h3>WEBSITES</h3>
+                </div>
+                <div class="archive-items">
+                    <span>ADMD</span>
+                    <span>Hausman</span>
+                    <span>Stardust Trinket</span>
+                    <span>Denneen</span>
+                    <span>USDairy</span>
+                    <span>Whitewords</span>
+                    <span>Truqap</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>02</span>
+                    <h3>CAMPAIGN MICROSITES</h3>
+                </div>
+                <div class="archive-items">
+                    <span>Lowyat — A Greener Christmas</span>
+                    <span>Genshin Impact</span>
+                    <span>Dior</span>
+                    <span>Novo Nordisk</span>
+                    <span>Beovu</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>03</span>
+                    <h3>WEB EXPERIENCES</h3>
+                </div>
+                <div class="archive-items">
+                    <span>AZ Javelin</span>
+                    <span>Danone</span>
+                    <span>Datroway</span>
+                    <span>Imfinzi</span>
+                    <span>Korsuva</span>
+                    <span>GP Symposium — Power Of One</span>
+                    <span>NUskin — ageLOC Boost</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>04</span>
+                    <h3>INTERACTIVE PRODUCT</h3>
+                </div>
+                <div class="archive-items">
+                    <span>Lexus LBX</span>
+                    <span>Lexus NX350 F Sport & Luxury</span>
+                    <span>Lexus RX Sport</span>
+                    <span>Lexus RZ</span>
+                    <span>Toyota CSUV GR-S</span>
+                    <span>Toyota Hilux GR-S</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>05</span>
+                    <h3>AR & WebAR</h3>
+                </div>
+                <div class="archive-items">
+                    <span>Poh Kong</span>
+                    <span>UNDP Mural</span>
+                    <span>Lundbeck World Mental Health Day</span>
+                    <span>MSD WLCD — MY + SG</span>
+                    <span>BNM 60th Anniversary</span>
+                    <span>Asia Creator Fest</span>
+                    <span>Karnival Kesihatan</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>06</span>
+                    <h3>SOCIAL & CAMERA AR</h3>
+                </div>
+                <div class="archive-items">
+                    <span>Snapchat — Blink Game</span>
+                    <span>EffectHouse — Dancing Sleeves</span>
+                    <span>EffectHouse — Blink Game</span>
+                    <span>EffectHouse — Catch Game</span>
+                    <span>MetaSpark — Biore AR</span>
+                    <span>MetaSpark — Clorox AR</span>
+                    <span>MetaSpark — Coway AR</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>07</span>
+                    <h3>IMMERSIVE 360°</h3>
+                </div>
+                <div class="archive-items">
+                    <span>Toyota — Virtual Showroom</span>
+                    <span>ClearCorrect — Medical Clinic</span>
+                    <span>Takeda — Medical Booth</span>
+                    <span>NUskin — Experience Zone</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>08</span>
+                    <h3>VEEVA & HEALTHCARE</h3>
+                </div>
+                <div class="archive-items">
+                    <span>Veeva CLMs</span>
+                    <span>Veeva VAEs</span>
+                    <span>Interactive Quizzes</span>
+                    <span>Veeva Calculators</span>
+                    <span>Healthcare Digital Experiences</span>
+                </div>
+            </div>
+
+            <div class="archive-group">
+                <div class="archive-heading">
+                    <span>09</span>
+                    <h3>INTERACTIVE & PROTOTYPES</h3>
+                </div>
+                <div class="archive-items">
+                    <span>Catch Game</span>
+                    <span>Flappy Bird</span>
+                    <span>Pinball</span>
+                    <span>TauSarPiah — Interactive Visual Novel</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="Contact" class="contact">
+        <div class="contact-inner">
+            <p>Let's create<br>
+                something amazing.</p>
+            <h2>
+                Hire Me?
+            </h2>
+            <!-- <a href="mailto:iffahmtu@gmail.com" class="contact-btn">
+                Get In Touch →
+            </a>
+            <div class="socials">
+                <a href="#">LinkedIn</a>
+            </div> -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 IFFAHMTU. Creative Technologist</p>
+        <p>Designed & Developed with code.</p>
+    </footer>
+
+    <!-- Case Study Overlay -->
+    <div class="case-study" id="caseStudy">
+        <div class="case-study-inner">
+            <button class="case-close" aria-label="Close case study">×</button>
+
+            <div class="case-header">
+                <p class="case-type" id="caseType"></p>
+                <h2 id="caseTitle"></h2>
+                <p id="caseIntro"></p>
+            </div>
+
+            <div id="caseMedia" class="case-media">
+                <div class="case-slider">
+                    <div class="case-slider-track"></div>
+
+                    <button class="case-slider-prev" aria-label="Previous image">
+                        &#8592;
+                    </button>
+
+                    <button class="case-slider-next" aria-label="Next image">
+                        &#8594;
+                    </button>
+
+                    <div class="case-slider-counter">
+                        <span class="case-slider-current">00</span>
+                        /
+                        <span class="case-slider-total">18</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-meta">
+                <div>
+                    <span>ROLE</span>
+                    <h3 id="caseRole"></h3>
+                </div>
+                <div>
+                    <span>TECHNOLOGIES</span>
+                    <h3 id="caseTech"></h3>
+                </div>
+            </div>
+
+            <div class="case-content">
+                <div>
+                    <span>OVERVIEW</span>
+                    <p id="caseOverview"></p>
+                </div>
+                <div>
+                    <span>MY CONTRIBUTION</span>
+                    <p id="caseContribution"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+    if (hasValidAccess()) {
+        startAccessTimer();
+    }
+</script>
+
+</body>
+
+</html>
