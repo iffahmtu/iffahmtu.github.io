@@ -580,7 +580,7 @@ section {
 .case-meta {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 5em;
     border-top: 1px solid #292929;
     border-bottom: 1px solid #292929;
     padding: 40px 0
@@ -601,7 +601,7 @@ section {
 .case-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    gap: 5em;
     padding: 80px 0
 }
 
@@ -1204,7 +1204,6 @@ footer {
     .case-meta,
     .case-content {
         grid-template-columns: 1fr;
-        gap: 40px
     }
 
     .case-content {
